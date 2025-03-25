@@ -13,13 +13,8 @@ interface UserParams {
 
 const userRepository = AppDataSource.getRepository(User);
 
-export async function getUserById(id: number): Promise<User> {
-    const user = await userRepository.findOneBy({ id });
-    if (!user) throw new Error('User not found');
-    return user;
-}
-
 export async function deleteUser(id: number): Promise<void> {
     const user = await getUserById(id);
     await userRepository.remove(user);
 }
+
