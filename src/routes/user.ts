@@ -10,3 +10,10 @@ interface UserParams {
     lastName: string;
     role: string;
 }
+const userRepository = AppDataSource.getRepository(User);
+
+export async function getUserById(id: number): Promise<User> {
+    const user = await userRepository.findOneBy({ id });
+    if (!user) throw new Error('User not found');
+    return user;
+}
