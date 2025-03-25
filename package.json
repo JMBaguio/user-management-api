@@ -1,0 +1,41 @@
+{
+  "name": "user-management-api",
+  "version": "1.0.0",
+  "description": "First Group Project Activity\r GROUP A\r Leader: Joanna Marie F. Baguio\r Members: James Marwin T. Bolongon\r          Frank Dweezel D. Gomez\r          Glydel R. Villarino",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "start:dev": "nodemon --exec ts-node ./src/index.ts",
+    "build": "tsc",
+    "typeorm": "typeorm-ts-node-commonjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMBaguio/user-management-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JMBaguio/user-management-api/issues"
+  },
+  "homepage": "https://github.com/JMBaguio/user-management-api#readme",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/joi": "^17.2.2",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "mysql2": "^3.14.0",
+    "nodemon": "^3.1.9",
+    "typeorm": "^0.3.21"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
