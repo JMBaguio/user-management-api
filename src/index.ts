@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Ensure database is initialized before handling requests
-db.AppDataSource.initialize()
+AppDataSource.initialize()
     .then(() => {
         console.log('Database connection established successfully');
     })
