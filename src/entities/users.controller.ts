@@ -1,4 +1,16 @@
 import express, { Request, Response, NextFunction } from 'express';
+
+import {  getUserById,  } from '../routes/user';
+
+
+const router = express.Router();
+
+router.get('/:id', getById);
+
+function getById(req: Request, res: Response, next: NextFunction) {
+    getUserById(Number(req.params.id))
+        .then(user => res.json(user))
+=======
 import Joi, { Schema } from 'joi';
 import { validateRequest } from './validate-request';
 
@@ -17,8 +29,11 @@ router.delete('/:id', _delete);
 function _delete(req: Request, res: Response, next: NextFunction) {
     deleteUser(Number(req.params.id))
         .then(() => res.json({ message: 'User deleted' }))
+
         .catch(next);
 }
+
+
 
 
 // Routes
@@ -45,6 +60,7 @@ function createSchema (req:Request, res:Response, next:NextFunction ) {
     });
     validateRequest(req, next, schema);
 }
+
 
 
 export default router;

@@ -1,7 +1,16 @@
 import { AppDataSource } from './db';
 import { User } from './user.model';
-import bcrypt from 'bcryptjs';
 
+
+
+const userRepository = AppDataSource.getRepository(User);
+
+export async function getUserById(id: number): Promise<User> {
+    const user = await userRepository.findOneBy({ id });
+    if (!user) throw new Error('User not found');
+    return user;
+}
+=======
 interface UserParams {
     email: string;
     password: string;
@@ -42,4 +51,5 @@ export async function createUser(params: UserParams): Promise<void> {
     await userRepository.save(user)
     console.log('User created successfully');
 }
+
 
