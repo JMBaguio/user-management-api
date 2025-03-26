@@ -13,6 +13,13 @@ interface UserParams {
 
 const userRepository = AppDataSource.getRepository(User);
 
+
+export async function deleteUser(id: number): Promise<void> {
+    const user = await getUserById(id);
+    await userRepository.remove(user);
+}
+
+=======
 export async function createUser(params: UserParams): Promise<void> {
     // Check if the user already exists
     const existingUser = await userRepository.findOneBy({ email: params.email });
@@ -35,3 +42,4 @@ export async function createUser(params: UserParams): Promise<void> {
     await userRepository.save(user)
     console.log('User created successfully');
 }
+
