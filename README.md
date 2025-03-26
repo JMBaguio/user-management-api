@@ -21,13 +21,15 @@ II. SETUP INSTRUCTIONS
     npm install express typeorm mysql2 cors bcryptjs
 
     npm install --save-dev typescript ts-node @types/node @types/express
-# UPDATE ormconfig.json WITH YOUR MySQL CREDENTIALS
-{
-    "database": {
-        "host": "localhost",
-        "port":  "3306",
-        "user": "root",
-        "password":  "Baguio123#",
-        "database": "node-mysql-crud-api"
+# UPDATE config.ts WITH YOUR MySQL CREDENTIALS
+const config = {
+    database: {
+        host: process.env.DB_HOST || "localhost",
+        port: parseInt(process.env.DB_PORT || "3306"),
+        user: process.env.DB_USER || "root",
+        password: process.env.DB_PASSWORD || "22643068-b",
+        database: process.env.DB_NAME || "node_mysql_crud_api"
     }
-}
+} as const;
+
+export default conf

@@ -1,51 +1,20 @@
 import express, { Request, Response, NextFunction } from 'express';
-
-import {  getUserById,  } from '../routes/user';
-
-
-const router = express.Router();
-
-router.get('/:id', getById);
-
-function getById(req: Request, res: Response, next: NextFunction) {
-    getUserById(Number(req.params.id))
-        .then(user => res.json(user))
-=======
 import Joi, { Schema } from 'joi';
+
+import {  createUser, deleteUser, getUserById } from '../routes/user';
 import { validateRequest } from './validate-request';
-
-import { deleteUser } from '../routes/user';
-=======
-import { createUser } from '../routes/user';
-
 import Roles from './role';
 
 const router = express.Router();
 
-
-// Route
-router.delete('/:id', _delete);
-
-function _delete(req: Request, res: Response, next: NextFunction) {
-    deleteUser(Number(req.params.id))
-        .then(() => res.json({ message: 'User deleted' }))
-
-        .catch(next);
-}
-
-
-
-
-// Routes
+// Create User
 router.post('/', createSchema, create);
-
 
 function create(req: Request, res: Response, next: NextFunction) {
     createUser(req.body)
         .then(() => res.json({ message: 'User created' }))
         .catch(next);
 }
-
 
 // Schema validation functions
 function createSchema (req:Request, res:Response, next:NextFunction ) {
@@ -61,6 +30,22 @@ function createSchema (req:Request, res:Response, next:NextFunction ) {
     validateRequest(req, next, schema);
 }
 
+// Delete user by Id
+router.delete('/:id', _delete);
 
+function _delete(req: Request, res: Response, next: NextFunction) {
+    deleteUser(Number(req.params.id))
+        .then(() => res.json({ message: 'User deleted' }))
+        .catch(next);
+}
+
+//Get User by Id
+router.get('/:id', getById);
+
+function getById(req: Request, res: Response, next: NextFunction) {
+    getUserById(Number(req.params.id))
+        .then(user => res.json(user))
+        .catch(next)
+} 
 
 export default router;

@@ -1,7 +1,6 @@
 import { AppDataSource } from './db';
 import { User } from './user.model';
-
-
+import * as bcrypt from 'bcryptjs';
 
 const userRepository = AppDataSource.getRepository(User);
 
@@ -10,7 +9,7 @@ export async function getUserById(id: number): Promise<User> {
     if (!user) throw new Error('User not found');
     return user;
 }
-=======
+
 interface UserParams {
     email: string;
     password: string;
@@ -20,15 +19,11 @@ interface UserParams {
     role: string;
 }
 
-const userRepository = AppDataSource.getRepository(User);
-
-
 export async function deleteUser(id: number): Promise<void> {
     const user = await getUserById(id);
     await userRepository.remove(user);
 }
 
-=======
 export async function createUser(params: UserParams): Promise<void> {
     // Check if the user already exists
     const existingUser = await userRepository.findOneBy({ email: params.email });
