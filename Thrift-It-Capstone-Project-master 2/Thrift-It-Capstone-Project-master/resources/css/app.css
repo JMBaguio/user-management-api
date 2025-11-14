@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Spinner Loader Style */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3490dc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Swiper base */
+.swiper {
+    width: 100%;
+    height: 30rem; /* 👈 give it height */
+}
+
+/* Navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    width: 30px !important;   /* force override */
+    height: 30px !important;
+ 
+    border-radius: 9999px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 25px !important; /* force smaller icon */
+    color:rgb(12, 8, 3);
+}
+
+/* Pagination dots */
+.swiper-pagination-bullet {
+    background:rgb(5, 8, 14); /* gray-300 */
+    opacity: 1;
+}
+.swiper-pagination-bullet-active {
+    background:rgb(0, 0, 0); /* theme color */
+}
+/* Add this to your global CSS if needed */
+body.modal-open {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        background: rgba(36, 34, 34, 0.25);
+        color: #B59F84;
+    }
+}
+
